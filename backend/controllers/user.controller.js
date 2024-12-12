@@ -9,20 +9,23 @@ export const createUser = async (req, res) => {
         const checkExistingEmail = await User.findOne({email});
         if(checkExistingEmail) {
             return res.status(StatusCodes.BAD_REQUEST).json({error: 'Email already exists'});  
-        } else {
-
-            const hashedPassword = await bcrypt.hash(password, 10);
-
-            await User.create({
-                username,
-                email,
-                role,
-                password: hashedPassword
-            });
-
-            res.status(StatusCodes.CREATED).json({message: "User created successfully."})
         }
-    } catch (error) {
+
+        const checkExistingUsername = await User.findOne({ username });
+        if (checkExistingUsername) {
+            return res.status(StatusCodes.BAD_REQUEST).json({ error: 'Username already exists' });
+        }
+
+        const hashedPassword = await bcrypt.hash(password, 10);
+        await User.create({
+            username,
+            email,
+            role,
+            password: hashedPassword
+        });
+        res.status(StatusCodes.CREATED).json({message: "User created successfully."})
+    
+} catch (error) {
         console.error(error);
         return res.status(500).json({ message: "Server error" });
     }

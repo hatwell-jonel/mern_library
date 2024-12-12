@@ -12,11 +12,7 @@ export const login = async (req, res) => {
             return res.status(StatusCodes.UNAUTHORIZED).json({error: 'User not found'});
         }
 
-        // const isPasswordMatch = await user.comparePassword(password);
-        const isPasswordMatch = await bcrypt.compare(password, user.password, (err, result) => {
-            console.log("result", result); // This should return true if the password matches
-        });
-
+        const isPasswordMatch = await bcrypt.compare(password, user.password);
         if(!isPasswordMatch) {
             return res.status(StatusCodes.UNAUTHORIZED).json({error: 'Password does not match'});
         }
