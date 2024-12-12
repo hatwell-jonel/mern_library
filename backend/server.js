@@ -13,6 +13,9 @@ app.use(express.json());
 app.use(cors());
 
 import userRoute from "./routes/user.route.js";
+import authRoute from "./routes/auth.route.js";
+
+app.use("/api/auth", authRoute);
 app.use("/api/user", userRoute);
 
 
@@ -22,6 +25,7 @@ const connectDB = async () => {
         await mongoose.connect(process.env.MONGODB_URI);
     } catch (error) {
         console.error(error);
+        process.exit(1)
     }
 };
 
