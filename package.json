@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "proxy": "${process.env.APP_URL}",
   "scripts": {
     "dev": "nodemon backend/server.js"
   },
