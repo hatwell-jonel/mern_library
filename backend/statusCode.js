@@ -1,4 +1,4 @@
-const StatusCodes = {
+const statusCode = {
     OK: 200,
     CREATED: 201,
     ACCEPTED: 202,
@@ -17,4 +17,4 @@ const StatusCodes = {
     GATEWAY_TIMEOUT: 504,
 };
 
-export default StatusCodes;
+export default statusCode;
