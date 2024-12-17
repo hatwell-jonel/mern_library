@@ -1,16 +1,14 @@
-import './App.css'
-import { Button, HStack } from '@chakra-ui/react'
-import { Tag } from './components/ui/tag.jsx'
+// import './App.css'
+import { Routes, Route } from 'react-router-dom'
+import Login from './pages/Login.jsx'
 
 function App() {
   return (
-    <>
-      <HStack>
-        <Button>Click me</Button>
-        <Button>Click me</Button>
-        <Tag>Tag here</Tag>
-      </HStack>
-    </>
+    <Routes>
+
+      <Route path="/" index element={<Login />} />
+
+    </Routes>
   )
 }
 
