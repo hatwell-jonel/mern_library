@@ -11,7 +11,8 @@ import adminMiddleware from '../middleware/admin.middleware.js';
 
 const router = express.Router();
 
-router.get('/', authMiddleware, adminMiddleware, getUsers);
+// router.get('/', authMiddleware, adminMiddleware, getUsers);
+router.get('/', getUsers);
 router.get('/:id', getUser);
 router.post('/create', authMiddleware, createUser);
 router.put('/:id', updateUser);
